@@ -1,5 +1,5 @@
 {
-  "extends": "airbnb",
+  "extends": "music",
   "env": {
     "browser": true,
     "es6": true,
