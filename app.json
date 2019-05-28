@@ -1,22 +1,29 @@
 {
   "expo": {
     "name": "Lyrics Music",
-    "description": "Search Your music",
-    "icon": "./assets/images/icon.png",
     "slug": "lyrics-music",
-    "sdkVersion": "32.0.0",
-    "platforms": ["ios", "android"],
-    "orientation": "portrait",
     "privacy": "public",
+    "sdkVersion": "32.0.0",
+    "platforms": [
+      "ios", 
+      "android"
+    ],
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
     "primaryColor": "#07CCBA",
     "splash": {
       "backgroundColor": "#191919 ",
       "image": "./assets/images/splash.png",
-      "resizeMode": "cover"
+      "resizeMode": "contain"
     },
-    "extra": {
-      "appName": "Lyric Music",
-      "developerName": "expo"
-    }
+     "updates": {
+       "fallbackToCacheTimeout": 0
+     },
+     "assetBundlePatterns": [
+       "**/*"
+     ],
+     "ios": {
+       "supportsTablet": true
+     }
   }
 }
