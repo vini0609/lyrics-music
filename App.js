@@ -2,7 +2,6 @@ import React from 'react';
 import Sentry from 'sentry-expo';
 import { createAppContainer } from 'react-navigation';
 import { RootStack } from './config/router';
-
 // Remove this once Sentry is correctly setup.
 Sentry.enableInExpoDevelopment = false;
 
