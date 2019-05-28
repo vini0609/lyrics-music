@@ -17,15 +17,7 @@
     },
     "extra": {
       "appName": "Lyric Music",
-      "developerName": "expo",
-      "googleAnalytics": "UA-131961084",
-      "social": {
-        "expoApp": "",
-        "github": "",
-        "googlePlayStore": "",
-        "iTunesStore": "",
-        "portfolio": ""
-      }
+      "developerName": "expo"
     }
   }
 }
