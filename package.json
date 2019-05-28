@@ -1,8 +1,8 @@
 {
-  "name": "lyrics-king",
-  "version": "1.0.3",
+  "name": "lyrics",
+  "version": "1.0.0",
   "private": true,
-  "author": "Stephen Kempin (https://stephenkempin.co.uk/)",
+  "author": "",
   "license": "MIT",
   "keywords": [
     "expo",

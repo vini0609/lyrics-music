@@ -1,10 +1,5 @@
 import { Share } from 'react-native';
 import * as Expo from 'expo';
-import { Analytics, Event } from 'expo-analytics';
-
-// GA tracking
-const ID = Expo.Constants.manifest.extra.googleAnalytics;
-const analytics = new Analytics(ID);
 
 const handleShare = (message, url, title, screen) => {
   Share.share(
@@ -19,9 +14,7 @@ const handleShare = (message, url, title, screen) => {
       excludedActivityTypes: ['com.apple.UIKit.activity.PostToTwitter']
     }
   ).then(() => {
-    Expo.Amplitude.logEvent(`BUTTON: Share - ${screen} Screen`);
-    analytics.event(new Event('Button', 'Tap', `Share - ${screen} Screen`));
-  });
+    Expo.Amplitude.logEvent(`BUTTON: Share - ${screen} Screen`); });
 };
 
 export default handleShare;

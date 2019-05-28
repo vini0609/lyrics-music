@@ -6,26 +6,24 @@ import {
   Image,
   Keyboard,
   SafeAreaView,
-  StatusBar,
   TouchableWithoutFeedback
 } from 'react-native';
 import * as Expo from 'expo';
 import PropTypes from 'prop-types';
 /* eslint-disable import/no-extraneous-dependencies */
 import { EvilIcons } from '@expo/vector-icons';
-/* eslint-enable import/no-extraneous-dependencies */
-import { Analytics, ScreenHit } from 'expo-analytics';
+
 // search throlle and debounce
 import { throttle, debounce } from 'throttle-debounce';
 
-import LK_LOGO from '../assets/images/lk-logo.png';
+import LK_LOGO from '../assets/images/m-logo.jpg';
 import SK from '../assets/images/SK.png';
 
 // Config
 import colours from '../config/colours';
 //  Components
 import Suggestions from '../components/Suggestions';
-import Credits from '../components/Credits';
+
 
 // Cache images
 function cacheImages(images) {
@@ -36,10 +34,6 @@ function cacheImages(images) {
     return Expo.Asset.fromModule(image).downloadAsync();
   });
 }
-
-// GA tracking
-const ID = Expo.Constants.manifest.extra.googleAnalytics;
-const analytics = new Analytics(ID);
 
 export default class SearchScreen extends React.Component {
   static get propTypes() {
@@ -57,9 +51,7 @@ export default class SearchScreen extends React.Component {
   }
 
   componentDidMount() {
-    Expo.Amplitude.initialize('6460727d017e832e2083e13916c7c9e5');
-    Expo.Amplitude.logEvent('SCREEN: Search');
-    analytics.hit(new ScreenHit('SCREEN: Search'));
+
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -82,7 +74,7 @@ export default class SearchScreen extends React.Component {
 
   getInfo = () => {
     const { text } = this.state;
-    const url = `https://api.deezer.com/search?q=track:"${text}"&limit=20&order=RANKING?strict=on`;
+    const url = `https://api.deezer.com/search?q="${text}"&limit=20&order=RANKING?strict=on`;
 
     const cached = this.cache[url];
     if (cached) {
@@ -119,7 +111,6 @@ export default class SearchScreen extends React.Component {
     }
     return (
       <SafeAreaView style={styles.safeView}>
-        <StatusBar barStyle="light-content" />
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
           <View style={styles.container}>
             {showLogo && <Image style={styles.logo} source={LK_LOGO} />}
@@ -130,10 +121,9 @@ export default class SearchScreen extends React.Component {
 
                 <TextInput
                   style={styles.TextInput}
-                  onChangeText={changedText => this.setState({ text: changedText })
-                  }
+                  onChangeText={changedText => this.setState({ text: changedText })}
                   value={text}
-                  placeholder="Search song"
+                  placeholder="Search Artist"
                   placeholderTextColor="#fff"
                   clearButtonMode="always"
                 />
@@ -147,7 +137,7 @@ export default class SearchScreen extends React.Component {
                 />
               )}
             </View>
-            {showLogo && <Credits screen="Search" />}
+            {}
           </View>
         </TouchableWithoutFeedback>
       </SafeAreaView>
@@ -159,11 +149,11 @@ export default class SearchScreen extends React.Component {
 const styles = StyleSheet.create({
   safeView: {
     flex: 1,
-    backgroundColor: colours.primaryBlack
+    backgroundColor: 'white'
   },
   container: {
     flex: 1,
-    backgroundColor: colours.primaryBlack,
+    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: 40,
@@ -199,18 +189,11 @@ const styles = StyleSheet.create({
   Suggestions: {
     flex: 1,
     alignItems: 'center',
-
     color: colours.primaryWhite
   },
   creditsContainer: {
     flexDirection: 'row',
     width: 170
-  },
-  creditsText: {
-    fontSize: 12,
-    color: colours.secondaryGrey,
-    textAlign: 'left',
-    paddingLeft: 20
   },
   creditsImage: {
     width: 30,

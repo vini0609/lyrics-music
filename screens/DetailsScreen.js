@@ -11,15 +11,9 @@ import * as Expo from 'expo';
 import PropTypes from 'prop-types';
 import format from 'format-duration';
 import Placeholder from 'rn-placeholder';
-import { Analytics, ScreenHit } from 'expo-analytics';
 // Config
 import colours from '../config/colours';
-//  Components
-import Credits from '../components/Credits';
 
-// GA tracking
-const ID = Expo.Constants.manifest.extra.googleAnalytics;
-const analytics = new Analytics(ID);
 
 export default class DetailsScreen extends React.Component {
   static get propTypes() {
@@ -41,10 +35,6 @@ export default class DetailsScreen extends React.Component {
         }
       }
     } = this.props;
-    Expo.Amplitude.logEvent(`SCREEN - Details: ${title} by ${artist.name}`);
-    analytics.hit(
-      new ScreenHit(`SCREEN - Details: ${title} by ${artist.name}`)
-    );
 
     const lyricsQuery = `${artist.name}/${title}`;
     this.getLyrics(lyricsQuery);
@@ -57,7 +47,7 @@ export default class DetailsScreen extends React.Component {
 
   getLyrics = async (lyricsQuery) => {
     try {
-      const res = await fetch(`https://api.lyrics.ovh/v1/${lyricsQuery}`);
+      const res = await fetch(`https://api.ç/v1/${lyricsQuery}`);
       const response = await res.json();
       if (!this.isCancelled) this.setState({ lyrics: response.lyrics, isReady: true });
     } catch (e) {
@@ -169,9 +159,7 @@ Duration
           </View>
           {this.displayLyrics()}
         </View>
-        <View style={styles.creditsContainer}>
-          <Credits screen="Details" />
-        </View>
+       
       </ScrollView>
     );
   }

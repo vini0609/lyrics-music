@@ -15,16 +15,11 @@ import {
   SafeAreaView,
   View
 } from 'react-native';
-import Logo from '../assets/images/lk-logo.png';
-
-//  Components
-import SocialButton from '../components/SocialButton';
-//  Helper functions
+import Logo from '../assets/images/m-logo.jpg';
 import handleShare from '../utils/shareHelper';
 // Config
 import colours from './colours';
-// Constants
-import { socialLinks } from '../lib/constants';
+
 
 //  Screens
 import SearchScreen from '../screens/SearchScreen';
@@ -72,7 +67,6 @@ export const MainStack = createStackNavigator({
             `Check out lyrics for ${navigation.state.params.title} by ${
               navigation.state.params.artist.name
             } on ${extra.appName}!`,
-            `${extra.social.expoApp}`,
             `${extra.appName}`,
             'Details'
           )
@@ -124,17 +118,7 @@ export const RootStack = createDrawerNavigator(
             inactiveTintColor={colours.secondaryGrey}
             itemStyle={styles.itemStyle}
           />
-          <View style={styles.socialLinksContainer}>
-            {socialLinks.map((socialLink, index) => (
-              <SocialButton
-                key={socialLink.label + index}
-                icon={socialLink.icon}
-                label={socialLink.label}
-                url={socialLink.url}
-                screen="About"
-              />
-            ))}
-          </View>
+   
         </SafeAreaView>
       </ScrollView>
     )
