@@ -9,4 +9,5 @@ const colours = {
   primaryGrey: '#AAAAAA',
   secondaryGrey: '#3E3E3E'
 };
+
 export default colours;
