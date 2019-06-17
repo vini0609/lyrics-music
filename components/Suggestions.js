@@ -8,10 +8,10 @@ import {
   StyleSheet,
   View
 } from 'react-native';
+
 import PropTypes from 'prop-types';
-/* eslint-disable import/no-extraneous-dependencies */
 import { EvilIcons } from '@expo/vector-icons';
-/* eslint-enable import/no-extraneous-dependencies */
+
 // Config
 import colours from '../config/colours';
 
